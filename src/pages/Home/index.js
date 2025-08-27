@@ -1,24 +1,39 @@
+import { useEffect, useState, useMemo } from "react";
 import { Container, Header, Card, InputSearchContainer, ListHeader } from "./styles";
 import { Link } from 'react-router-dom'
 
-import arrow from '../../assets/images/icons/arrow.svg'
-import trash from '../../assets/images/icons/trash.svg'
-import edit from '../../assets/images/icons/edit.svg'
-import { useEffect, useState } from "react";
+import arrow from '../../assets/images/icons/arrow.svg';
+import trash from '../../assets/images/icons/trash.svg';
+import edit from '../../assets/images/icons/edit.svg';
+import Loader from '../../components/Loader/';
+import delay from "../../utils/delay";
 
 export default function Home(){
   const [contacts, setContacts] = useState([]);
   const [orderBy, setOrderBy] = useState('asc');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isLoading, setIsLoading] = useState(true)
+
+  const filtredContacts = useMemo(() => contacts.filter((contact) => (
+    contact.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )), [contacts, searchTerm])
 
   useEffect(() => {
+    setIsLoading(true)
+
     fetch(`http://localhost:3001/contacts?orderBy=${orderBy}`)
     .then(async (response) => {
+      await delay(500)
+
       const json = await response.json();
       setContacts(json);
     })
     .catch((error) => {
       console.log('erro', error)
     })
+    .finally(() => {
+      setIsLoading(false);
+    });
   }, [orderBy]);
 
   function handleToggleOrderBy(){
@@ -27,28 +42,40 @@ export default function Home(){
     )
   }
 
+  function handleChangeSearchTerm(event) {
+    setSearchTerm(event.target.value)
+  }
+
   return (
     <Container>
+      <Loader isLoading={isLoading}/>
       <InputSearchContainer>
-        <input type="text" placeholder="Pesquise pelo nome..."/>
+        <input
+          value={searchTerm}
+          type="text"
+          placeholder="Pesquise pelo nome..."
+          onChange={handleChangeSearchTerm}
+        />
       </InputSearchContainer>
 
       <Header>
         <strong>
-          {contacts.length}
-          {contacts.length === 1 ? ' Contato' : ' Contatos'}
+          {filtredContacts.length}
+          {filtredContacts.length === 1 ? ' Contato' : ' Contatos'}
         </strong>
         <Link to="/new">Novo Contato</Link>
       </Header>
 
-      <ListHeader orderBy={orderBy}>
+      {filtredContacts.length > 0 && (
+        <ListHeader orderBy={orderBy}>
         <button type="button" onClick={handleToggleOrderBy}>
           <span>Nome</span>
           <img src={arrow} alt="Arrow" />
         </button>
-      </ListHeader>
+        </ListHeader>
+      )}
 
-      {contacts.map((contact) => (
+      {filtredContacts.map((contact) => (
         <Card key={contact.id}>
         <div className="info">
           <div className="contact-name">
