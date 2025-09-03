@@ -12,7 +12,7 @@ export default function Home(){
   const [contacts, setContacts] = useState([]);
   const [orderBy, setOrderBy] = useState('asc');
   const [searchTerm, setSearchTerm] = useState('');
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
   const filtredContacts = useMemo(() => contacts.filter((contact) => (
     contact.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -34,7 +34,6 @@ export default function Home(){
     }
 
     loadContacts()
-
   }, [orderBy]);
 
   function handleToggleOrderBy(){
@@ -68,7 +67,7 @@ export default function Home(){
       </Header>
 
       {filtredContacts.length > 0 && (
-        <ListHeader orderBy={orderBy}>
+        <ListHeader $orderBy={orderBy}>
         <button type="button" onClick={handleToggleOrderBy}>
           <span>Nome</span>
           <img src={arrow} alt="Arrow" />
