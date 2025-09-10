@@ -6,7 +6,8 @@ import {
   InputSearchContainer,
   ListHeader,
   ErrorContainer,
-  EmptyListContainer } from "./styles";
+  EmptyListContainer,
+  SearchNotFoundContainer } from "./styles";
 import { Link } from 'react-router-dom'
 
 import arrow from '../../assets/images/icons/arrow.svg';
@@ -14,6 +15,7 @@ import trash from '../../assets/images/icons/trash.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import sad from '../../assets/images/sad.svg';
 import emptyBox from '../../assets/images/empty-box.svg';
+import magnifierQuestion from '../../assets/images/magnifier-question.svg';
 
 import Loader from '../../components/Loader/';
 import ContactsService from "../../services/ContactsService";
@@ -127,6 +129,17 @@ export default function Home(){
               </p>
             </EmptyListContainer>
           )}
+
+          {(contacts.length > 0 && filtredContacts.length < 1) && (
+            <SearchNotFoundContainer>
+              <img src={magnifierQuestion} alt="Magnifier question"/>
+
+              <span>
+                Nenhum resultado foi encontrado para <strong>{searchTerm}</strong>
+              </span>
+            </SearchNotFoundContainer>
+          )}
+
           {filtredContacts.length > 0 && (
           <ListHeader $orderBy={orderBy}>
           <button type="button" onClick={handleToggleOrderBy}>
