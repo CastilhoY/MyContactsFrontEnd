@@ -19,7 +19,7 @@ export default defineConfig([
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "import/no-anonymous-default-export": "off",
-
+        "no-empty": ["error", { "allowEmptyCatch": true }]
     }
   },
   pluginReact.configs.flat.recommended,
