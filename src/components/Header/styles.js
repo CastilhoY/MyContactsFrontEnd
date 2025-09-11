@@ -7,4 +7,9 @@ export const Container = styled.header`
     flex-direction: column;
     align-items: center;
 
+    p {
+      margin-bottom: 50px;
+      text-align: justify;
+    }
+
 `
