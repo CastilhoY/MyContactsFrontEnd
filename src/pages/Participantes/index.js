@@ -6,9 +6,8 @@ const Participantes = () => {
     <div className="page-container">
       <h2>Participantes do Projeto</h2>
       <ul>
-        <li>Yãry Castilho</li>
-        <li>Marcelo Alvarez</li>
-
+        <li>Yãry Castilho - Matrícula: 202403363682</li>
+        <li>Marcelo Alvarez - Matrícula: 202402962371</li>
       </ul>
     </div>
   );

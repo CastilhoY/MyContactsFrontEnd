@@ -5,18 +5,54 @@ const Contato = () => {
   return (
     <div className="page-container">
       <h2>Contato</h2>
-      <p>Entre em contato com a gente:</p>
-      <form>
-        <label>Nome:</label>
-        <input type="text" placeholder="Digite seu nome" />
+      <p>Entre em contato com a g ente:</p>
+      <form id="sacForm">
+        <div className="field">
+          <label htmlFor="nome">Nome:</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Digite seu nome"
+            required
+          />
+        </div>
 
-        <label>Email:</label>
-        <input type="email" placeholder="Digite seu email" />
+        <div className="field">
+          <label htmlFor="email">E-mail:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Digite seu e-mail"
+            required
+          />
+        </div>
 
-        <label>Mensagem:</label>
-        <textarea placeholder="Digite sua mensagem"></textarea>
+        <div className="field">
+          <label htmlFor="assunto">Assunto:</label>
+          <input
+            type="text"
+            id="assunto"
+            name="assunto"
+            placeholder="Digite o assunto"
+            required
+          />
+        </div>
 
-        <button type="submit">Enviar</button>
+        <div className="field">
+          <label htmlFor="mensagem">Mensagem:</label>
+          <textarea
+            id="mensagem"
+            name="mensagem"
+            placeholder="Digite sua mensagem completa aqui..."
+            required
+          ></textarea>
+        </div>
+
+        <div className="button-container">
+          <button type="submit">Enviar</button>
+        </div>
       </form>
     </div>
   );
