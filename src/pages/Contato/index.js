@@ -5,7 +5,7 @@ const Contato = () => {
   return (
     <div className="page-container">
       <h2>Contato</h2>
-      <p>Entre em contato com a g ente:</p>
+      <p>Entre em contato com a gente:</p>
       <form id="sacForm">
         <div className="field">
           <label htmlFor="nome">Nome:</label>
@@ -51,7 +51,7 @@ const Contato = () => {
         </div>
 
         <div className="button-container">
-          <button type="submit">Enviar</button>
+          <button id="botao" type="submit">Enviar</button>
         </div>
       </form>
     </div>

@@ -80,7 +80,7 @@ textarea {
     justify-content: center;
 }
 
-button {
+#botao {
     width: 250px;
     padding: 22px;
     background: linear-gradient(135deg, #6c63ff, #48c6ef);
@@ -95,7 +95,7 @@ button {
     margin-bottom: 50px;
 }
 
-button:hover {
+#botao:hover {
     background: linear-gradient(135deg, #48c6ef, #6c63ff);
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
@@ -109,7 +109,7 @@ button:hover {
 }
 
 @media(max-width: 600px){
-    button {
+    #botao {
         width: 100%;
     }
 }
