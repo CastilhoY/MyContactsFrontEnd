@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 const HeaderTop = () => {
   return (
     <HeaderContainer>
-      <h1>Projeto</h1>
       <Nav>
+        <NavItem>
+          <NavLink as={Link} to="/"><h1>Projeto</h1></NavLink>
+        </NavItem>
         <NavItem>
           <NavLink as={Link} to="/tabela">Tabela</NavLink>
         </NavItem>
