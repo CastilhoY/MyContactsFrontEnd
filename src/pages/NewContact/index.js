@@ -2,28 +2,27 @@ import PageHeader from "../../components/PageHeader";
 import ContactForm from "../../components/ContactForm";
 import contactsService from "../../services/ContactsService";
 
-export default function NewContact(){
+export default function NewContact() {
   async function handleSubmit(formData) {
-    const contact = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      category_id: formData.categoryId,
-    };
+    try {
+      const contact = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        category_id: formData.categoryId,
+      };
 
-    const response = await contactsService.createContact(contact)
+      const response = await contactsService.createContact(contact);
 
-    console.log(response)
+      console.log(response);
+    } catch {}
   }
 
-    return (
-      <>
-        <PageHeader title="Novo Contato"/>
+  return (
+    <>
+      <PageHeader title="Novo Contato" />
 
-        <ContactForm
-          buttonLabel="Cadastrar"
-          onSubmit={handleSubmit}
-        />
-      </>
-    )
+      <ContactForm buttonLabel="Cadastrar" onSubmit={handleSubmit} />
+    </>
+  );
 }
