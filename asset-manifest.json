@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/MyContactsFrontEnd/static/css/main.fd79fcbf.chunk.css",
+    "main.js": "/MyContactsFrontEnd/static/js/main.adc9932b.chunk.js",
+    "main.js.map": "/MyContactsFrontEnd/static/js/main.adc9932b.chunk.js.map",
+    "runtime-main.js": "/MyContactsFrontEnd/static/js/runtime-main.3508e6ea.js",
+    "runtime-main.js.map": "/MyContactsFrontEnd/static/js/runtime-main.3508e6ea.js.map",
+    "static/js/2.76602b22.chunk.js": "/MyContactsFrontEnd/static/js/2.76602b22.chunk.js",
+    "static/js/2.76602b22.chunk.js.map": "/MyContactsFrontEnd/static/js/2.76602b22.chunk.js.map",
+    "index.html": "/MyContactsFrontEnd/index.html",
+    "static/css/main.fd79fcbf.chunk.css.map": "/MyContactsFrontEnd/static/css/main.fd79fcbf.chunk.css.map",
+    "static/js/2.76602b22.chunk.js.LICENSE.txt": "/MyContactsFrontEnd/static/js/2.76602b22.chunk.js.LICENSE.txt",
+    "static/media/arrow.ef8690b9.svg": "/MyContactsFrontEnd/static/media/arrow.ef8690b9.svg",
+    "static/media/check-circle.72f4513b.svg": "/MyContactsFrontEnd/static/media/check-circle.72f4513b.svg",
+    "static/media/edit.cd720684.svg": "/MyContactsFrontEnd/static/media/edit.cd720684.svg",
+    "static/media/empty-box.af4ffcbe.svg": "/MyContactsFrontEnd/static/media/empty-box.af4ffcbe.svg",
+    "static/media/logo.f9814e67.svg": "/MyContactsFrontEnd/static/media/logo.f9814e67.svg",
+    "static/media/magnifier-question.98f183db.svg": "/MyContactsFrontEnd/static/media/magnifier-question.98f183db.svg",
+    "static/media/sad.0d5bb2e9.svg": "/MyContactsFrontEnd/static/media/sad.0d5bb2e9.svg",
+    "static/media/trash.d6d5de5d.svg": "/MyContactsFrontEnd/static/media/trash.d6d5de5d.svg",
+    "static/media/x-circle.682182be.svg": "/MyContactsFrontEnd/static/media/x-circle.682182be.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3508e6ea.js",
+    "static/js/2.76602b22.chunk.js",
+    "static/css/main.fd79fcbf.chunk.css",
+    "static/js/main.adc9932b.chunk.js"
+  ]
+}
