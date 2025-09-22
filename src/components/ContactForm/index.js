@@ -12,108 +12,117 @@ import Select from "../Select";
 import Button from "../Button";
 
 export default function ContactForm({ buttonLabel, onSubmit }) {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [categoryId, setCategoryId] = useState('')
-  const [categories, setCategories] = useState([])
-  const [isLoadingCategories, setIsLoadingCategories] = useState(true)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [isLoadingCategories, setIsLoadingCategories] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { setError, removeError, getErrorMessageByFieldName, errors } = useErrors()
+  const { setError, removeError, getErrorMessageByFieldName, errors } =
+    useErrors();
 
-  const isFormValid = (name && errors.length === 0)
+  const isFormValid = name && errors.length === 0;
 
   useEffect(() => {
-    async function loadCategories(){
-      try{
-        const categoriesList = await CategoriesService.listCategories()
+    async function loadCategories() {
+      try {
+        const categoriesList = await CategoriesService.listCategories();
 
-      setCategories(categoriesList)
-      }catch {} finally {
-        setIsLoadingCategories(false)
+        setCategories(categoriesList);
+      } catch {
+      } finally {
+        setIsLoadingCategories(false);
       }
     }
 
-    loadCategories()
-  }, [])
+    loadCategories();
+  }, []);
 
-  function handleNameChange(event){
+  function handleNameChange(event) {
     setName(event.target.value);
 
-    if (!event.target.value){
-      setError({ field: 'name', message: 'Nome é obrigatório.'})
+    if (!event.target.value) {
+      setError({ field: "name", message: "Nome é obrigatório." });
     } else {
-      removeError('name')
+      removeError("name");
     }
   }
 
-  function handleEmailChange(event){
+  function handleEmailChange(event) {
     setEmail(event.target.value);
 
-    if(event.target.value && !isEmailValid(event.target.value)){
-      setError({ field: 'email', message: 'E-mail inválido.'})
-    }else{
-      removeError('email')
+    if (event.target.value && !isEmailValid(event.target.value)) {
+      setError({ field: "email", message: "E-mail inválido." });
+    } else {
+      removeError("email");
     }
   }
 
-  function hadlePhoneChange(event){
-    setPhone(formatPhone(event.target.value))
+  function hadlePhoneChange(event) {
+    setPhone(formatPhone(event.target.value));
   }
 
   async function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     await onSubmit({
-      name, email, phone, categoryId
-    })
+      name,
+      email,
+      phone,
+      categoryId,
+    });
 
-    setIsSubmitting(false)
+    setIsSubmitting(false);
+    setName('')
+    setEmail('')
+    setPhone('')
+    setCategoryId('')
+
   }
 
   return (
     <Form onSubmit={handleSubmit} noValidate>
-      <FormGroup error={getErrorMessageByFieldName('name')}>
+      <FormGroup error={getErrorMessageByFieldName("name")}>
         <Input
-        error={getErrorMessageByFieldName('name')}
-        placeholder="Nome *"
-        value={name}
-        onChange={handleNameChange}
-        disabled={isSubmitting}
+          error={getErrorMessageByFieldName("name")}
+          placeholder="Nome *"
+          value={name}
+          onChange={handleNameChange}
+          disabled={isSubmitting}
         />
       </FormGroup>
 
-      <FormGroup error={getErrorMessageByFieldName('email')}>
+      <FormGroup error={getErrorMessageByFieldName("email")}>
         <Input
-        type="email"
-        error={getErrorMessageByFieldName('email')}
-        placeholder="E-mail"
-        value={email}
-        onChange={handleEmailChange}
-        disabled={isSubmitting}
+          type="email"
+          error={getErrorMessageByFieldName("email")}
+          placeholder="E-mail"
+          value={email}
+          onChange={handleEmailChange}
+          disabled={isSubmitting}
         />
       </FormGroup>
 
       <FormGroup>
         <Input
-        placeholder="Telefone"
-        value={phone}
-        onChange={hadlePhoneChange}
-        maxLength="15"
-        disabled={isSubmitting}
+          placeholder="Telefone"
+          value={phone}
+          onChange={hadlePhoneChange}
+          maxLength="15"
+          disabled={isSubmitting}
         />
       </FormGroup>
 
       <FormGroup isLoading={isLoadingCategories}>
         <Select
-        value={categoryId}
-        onChange={(event) => setCategoryId(event.target.value)}
-        disabled={isLoadingCategories || isSubmitting}
+          value={categoryId}
+          onChange={(event) => setCategoryId(event.target.value)}
+          disabled={isLoadingCategories || isSubmitting}
         >
-
           <option value="">Sem categoria</option>
 
           {categories.map((category) => (
@@ -121,24 +130,19 @@ export default function ContactForm({ buttonLabel, onSubmit }) {
               {category.name}
             </option>
           ))}
-
         </Select>
       </FormGroup>
 
       <ButtonContainer>
-        <Button
-          type="submit"
-          disabled={!isFormValid}
-          isLoading={isSubmitting}
-        >
+        <Button type="submit" disabled={!isFormValid} isLoading={isSubmitting}>
           {buttonLabel}
         </Button>
       </ButtonContainer>
     </Form>
-  )
+  );
 }
 
 ContactForm.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-}
+};
