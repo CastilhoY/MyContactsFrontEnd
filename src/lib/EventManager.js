@@ -1,4 +1,4 @@
-export default class EventMenager {
+export default class EventManager {
   constructor() {
     this.listners = new Map();
   }
