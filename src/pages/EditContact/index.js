@@ -1,17 +1,46 @@
 import PageHeader from "../../components/PageHeader";
 import ContactForm from "../../components/ContactForm";
+import { useParams, useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
+import contactsService from "../../services/ContactsService";
+import Loader from "../../components/Loader";
+import toast from "../../utils/toast";
 
+export default function EditContact() {
+  const [isLoading, setIsLoading] = useState(true);
+  const { id } = useParams();
+  const history = useHistory();
 
-export default function EditContact(){
-    return (
-      <>
-        <PageHeader
-          title="Editar Yãry"
-        />
+  useEffect(() => {
+    async function loadContact() {
+      try {
+        const contactData = await contactsService.getCotactById(id);
 
-        <ContactForm
-          buttonLabel="Salvar Alterações"
-        />
-      </>
-    )
+        console.log({ contactData });
+        setIsLoading(false);
+      } catch {
+        history.push("/");
+        toast({
+          type: "danger",
+          text: "Contato não encontrado!",
+        });
+      }
+    }
+
+    loadContact();
+  }, [id, history]);
+
+  function handleSubmit() {
+    //
+  }
+
+  return (
+    <>
+      <Loader isLoading={isLoading} />
+
+      <PageHeader title="Editar Yãry" />
+
+      <ContactForm buttonLabel="Salvar Alterações" onSubmit={handleSubmit} />
+    </>
+  );
 }
