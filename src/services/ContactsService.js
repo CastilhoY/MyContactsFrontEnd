@@ -9,7 +9,7 @@ class ContactsService {
     return this.httpClient.get(`/contacts?orderBy=${orderBy}`)
   }
 
-  getCotactById(id){
+  getContactById(id){
     return this.httpClient.get(`/contacts/${id}`)
   }
 
