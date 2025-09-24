@@ -19,7 +19,7 @@ export default function Modal({
 
   return ReactDom.createPortal(
     <Overlay>
-      <Container danger={danger}>
+      <Container $danger={danger}>
 
         <h1>{title}</h1>
         <div className="modal-body">
@@ -37,7 +37,7 @@ export default function Modal({
 
          <Button
           type="button"
-          danger={danger}
+        $danger={danger}
           onClick={onConfirm}
         >
           {confirmLabel}
