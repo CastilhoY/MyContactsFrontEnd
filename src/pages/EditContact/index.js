@@ -5,37 +5,41 @@ import { useEffect, useRef, useState } from "react";
 import contactsService from "../../services/ContactsService";
 import Loader from "../../components/Loader";
 import toast from "../../utils/toast";
+import useSafeAsyncAction from "../../hooks/useSafeAsyncAction";
 
 export default function EditContact() {
   const [isLoading, setIsLoading] = useState(true);
-  const [contactName, setContactName] = useState('')
+  const [contactName, setContactName] = useState("");
 
   const contactFormRef = useRef(null);
 
   const { id } = useParams();
   const history = useHistory();
+  const safeAsyncAction = useSafeAsyncAction();
 
   useEffect(() => {
     async function loadContact() {
       try {
-        const contact = await contactsService.getContactById(
-          id,
-        );
+        const contact = await contactsService.getContactById(id);
 
-        contactFormRef.current.setFieldValues(contact)
-        setIsLoading(false);
-        setContactName(contact.name)
+        safeAsyncAction(() => {
+          contactFormRef.current.setFieldValues(contact);
+          setIsLoading(false);
+          setContactName(contact.name);
+        });
       } catch {
-        history.push("/");
-        toast({
-          type: "danger",
-          text: "Contato não encontrado!",
+        safeAsyncAction(() => {
+          history.push("/");
+          toast({
+            type: "danger",
+            text: "Contato não encontrado!",
+          });
         });
       }
     }
 
     loadContact();
-  }, [id, history]);
+  }, [id, history, safeAsyncAction]);
 
   async function handleSubmit(formData) {
     try {
@@ -48,7 +52,7 @@ export default function EditContact() {
 
       const contactData = await contactsService.updateContact(id, contact);
 
-      setContactName(contactData.name)
+      setContactName(contactData.name);
 
       toast({
         type: "success",
@@ -66,7 +70,9 @@ export default function EditContact() {
     <>
       <Loader isLoading={isLoading} />
 
-      <PageHeader title={isLoading ? 'Carregando... ' : `Editar ${contactName}`} />
+      <PageHeader
+        title={isLoading ? "Carregando... " : `Editar ${contactName}`}
+      />
 
       <ContactForm
         ref={contactFormRef}
