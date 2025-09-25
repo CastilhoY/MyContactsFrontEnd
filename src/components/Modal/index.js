@@ -1,7 +1,7 @@
-import { Overlay, Container, Footer } from "./styles"
-import Button from '../Button'
-import PropTypes from "prop-types"
-import ReactDom from 'react-dom'
+import { Overlay, Container, Footer } from "./styles";
+import Button from "../Button";
+import PropTypes from "prop-types";
+import ReactPortal from "../ReactPortal";
 
 export default function Modal({
   danger,
@@ -14,42 +14,39 @@ export default function Modal({
   onCancel,
   onConfirm,
 }) {
-  if(!visible){
-    return null
+  if (!visible) {
+    return null;
   }
 
-  return ReactDom.createPortal(
-    <Overlay>
-      <Container danger={danger}>
+  return (
+    <ReactPortal containerId={"modal-root"}>
+      <Overlay>
+        <Container danger={danger}>
+          <h1>{title}</h1>
+          <div className="modal-body">{children}</div>
 
-        <h1>{title}</h1>
-        <div className="modal-body">
-          {children}
-        </div>
+          <Footer>
+            <button
+              type="button"
+              className="cancel-button"
+              onClick={onCancel}
+              disabled={isLoading}
+            >
+              {calcelLabel}
+            </button>
 
-        <Footer>
-         <button
-          type="button"
-          className="cancel-button"
-          onClick={onCancel}
-          disabled={isLoading}
-        >
-          {calcelLabel}
-         </button>
-
-         <Button
-          type="button"
-          danger={danger}
-          onClick={onConfirm}
-          isLoading={isLoading}
-        >
-          {confirmLabel}
-          </Button>
-        </Footer>
-
-      </Container>
-    </Overlay>,
-    document.getElementById('modal-root')
+            <Button
+              type="button"
+              danger={danger}
+              onClick={onConfirm}
+              isLoading={isLoading}
+            >
+              {confirmLabel}
+            </Button>
+          </Footer>
+        </Container>
+      </Overlay>
+    </ReactPortal>
   );
 }
 
@@ -68,6 +65,6 @@ Modal.propTypes = {
 Modal.defaultProps = {
   danger: false,
   isLoading: false,
-  calcelLabel: 'Cancelar',
-  confirmLabel: 'Confirmar',
+  calcelLabel: "Cancelar",
+  confirmLabel: "Confirmar",
 };
