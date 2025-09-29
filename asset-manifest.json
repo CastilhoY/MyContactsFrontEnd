@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/MyContactsFrontEnd/static/css/main.4644b195.chunk.css",
-    "main.js": "/MyContactsFrontEnd/static/js/main.e53f797c.chunk.js",
-    "main.js.map": "/MyContactsFrontEnd/static/js/main.e53f797c.chunk.js.map",
+    "main.js": "/MyContactsFrontEnd/static/js/main.efabd8b2.chunk.js",
+    "main.js.map": "/MyContactsFrontEnd/static/js/main.efabd8b2.chunk.js.map",
     "runtime-main.js": "/MyContactsFrontEnd/static/js/runtime-main.3508e6ea.js",
     "runtime-main.js.map": "/MyContactsFrontEnd/static/js/runtime-main.3508e6ea.js.map",
-    "static/js/2.47602cae.chunk.js": "/MyContactsFrontEnd/static/js/2.47602cae.chunk.js",
-    "static/js/2.47602cae.chunk.js.map": "/MyContactsFrontEnd/static/js/2.47602cae.chunk.js.map",
+    "static/js/2.7f7dcd12.chunk.js": "/MyContactsFrontEnd/static/js/2.7f7dcd12.chunk.js",
+    "static/js/2.7f7dcd12.chunk.js.map": "/MyContactsFrontEnd/static/js/2.7f7dcd12.chunk.js.map",
     "index.html": "/MyContactsFrontEnd/index.html",
     "static/css/main.4644b195.chunk.css.map": "/MyContactsFrontEnd/static/css/main.4644b195.chunk.css.map",
-    "static/js/2.47602cae.chunk.js.LICENSE.txt": "/MyContactsFrontEnd/static/js/2.47602cae.chunk.js.LICENSE.txt",
+    "static/js/2.7f7dcd12.chunk.js.LICENSE.txt": "/MyContactsFrontEnd/static/js/2.7f7dcd12.chunk.js.LICENSE.txt",
     "static/media/arrow.ef8690b9.svg": "/MyContactsFrontEnd/static/media/arrow.ef8690b9.svg",
     "static/media/check-circle.72f4513b.svg": "/MyContactsFrontEnd/static/media/check-circle.72f4513b.svg",
     "static/media/edit.cd720684.svg": "/MyContactsFrontEnd/static/media/edit.cd720684.svg",
@@ -22,8 +22,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.3508e6ea.js",
-    "static/js/2.47602cae.chunk.js",
+    "static/js/2.7f7dcd12.chunk.js",
     "static/css/main.4644b195.chunk.css",
-    "static/js/main.e53f797c.chunk.js"
+    "static/js/main.efabd8b2.chunk.js"
   ]
 }
