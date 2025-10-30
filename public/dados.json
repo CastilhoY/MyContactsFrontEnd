@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "avatar": "https://i.pravatar.cc/150?img=1",
+    "nome": "Alice Silva",
+    "email": "alice.silva@example.com",
+    "telefone": "(11) 98765-4321"
+  },
+  {
+    "id": 2,
+    "avatar": "https://i.pravatar.cc/150?img=2",
+    "nome": "Bruno Costa",
+    "email": "bruno.costa@example.com",
+    "telefone": "(21) 91234-5678"
+  },
+  {
+    "id": 3,
+    "avatar": "https://i.pravatar.cc/150?img=3",
+    "nome": "Carla Dias",
+    "email": "carla.dias@example.com",
+    "telefone": "(31) 95555-4444"
+  },
+  {
+    "id": 4,
+    "avatar": "https://i.pravatar.cc/150?img=4",
+    "nome": "Daniel Moreira",
+    "email": "daniel.moreira@example.com",
+    "telefone": "(41) 92222-3333"
+  }
+]

@@ -39,6 +39,15 @@ form {
   text-align: left;
   margin-bottom: 40px;
 }
+.field input.erro {
+  border-color: #e74c3c;
+}
+.mensagem-erro {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
 
 label {
     font-weight: 600;

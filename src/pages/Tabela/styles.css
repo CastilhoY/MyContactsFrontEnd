@@ -1,80 +1,100 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background-color: #f4f4f4;
 }
 
 h1 {
-    text-align: center;
-    color: #333;
+  text-align: center;
+  color: #333;
 }
 
-h2{
+h2 {
   margin-bottom: 40px;
 }
 
-table {
-    width: 90%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    margin-bottom: 50px;
+/* MUDANÇA: Troquei 'table' por '.tabela-contatos'
+ * para o estilo ser específico desta tabela.
+*/
+.tabela-contatos {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
 }
 
-th, td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
+/* MUDANÇA: Especifiquei que o 'th' e 'td' são desta tabela */
+.tabela-contatos th,
+.tabela-contatos td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
 }
 
-th {
-    background-color: #007BFF;
-    color: white;
+/* MUDANÇA: Adicionei 'vertical-align' para o avatar
+ * ficar bem alinhado verticalmente na célula.
+*/
+.tabela-contatos td {
+  vertical-align: middle;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
+/* MUDANÇA: Especifiquei que o 'th' é desta tabela */
+.tabela-contatos th {
+  background-color: #007BFF;
+  color: white;
+}
+
+/* MUDANÇA: Especifiquei que o 'tr:hover' é desta tabela */
+.tabela-contatos tr:hover {
+  background-color: #f1f1f1;
 }
 
 img.avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
+/* MUDANÇA: Atualizei os seletores no media query também */
 @media (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
+  .tabela-contatos,
+  .tabela-contatos thead,
+  .tabela-contatos tbody,
+  .tabela-contatos th,
+  .tabela-contatos td,
+  .tabela-contatos tr {
+    display: block;
+  }
 
-    th {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
+  .tabela-contatos th {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
 
-    tr {
-        margin-bottom: 15px;
-    }
+  .tabela-contatos tr {
+    margin-bottom: 15px;
+  }
 
-    td {
-        border: none;
-        position: relative;
-        padding-left: 50%;
-    }
+  .tabela-contatos td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+  }
 
-    td:before {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        width: 45%;
-        white-space: nowrap;
-    }
+  .tabela-contatos td:before {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 45%;
+    white-space: nowrap;
+  }
 
-    td:nth-of-type(1):before { content: "Avatar"; }
-    td:nth-of-type(2):before { content: "Nome"; }
-    td:nth-of-type(3):before { content: "Email"; }
-    td:nth-of-type(4):before { content: "Telefone"; }
+  .tabela-contatos td:nth-of-type(1):before { content: "Avatar"; }
+  .tabela-contatos td:nth-of-type(2):before { content: "Nome"; }
+  .tabela-contatos td:nth-of-type(3):before { content: "Email"; }
+  .tabela-contatos td:nth-of-type(4):before { content: "Telefone"; }
 }
