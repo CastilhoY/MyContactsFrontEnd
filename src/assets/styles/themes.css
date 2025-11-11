@@ -1,0 +1,50 @@
+:root[data-tema='claro'] {
+  --fundo: #ffffff;   /* branco */
+  --texto: #000000;   /* preto */
+  --botao-fundo: #000000;
+  --botao-texto: #ffffff;
+}
+
+:root[data-tema='escuro'] {
+  --fundo: #081534;   /* azul escuro */
+  --texto: #ffffff;   /* branco */
+  --botao-fundo: #ffffff;
+  --botao-texto: #081534;
+}
+
+html, body {
+  background-color: var(--fundo);
+  color: var(--texto);
+  height: 100%;
+  margin: 0;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+#alternar-tema {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background-color: var(--botao-fundo);
+  color: var(--botao-texto);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  
+  /* Mantém o texto da tabela preto mesmo no modo escuro */
+[data-tema='escuro'] table,
+[data-tema='escuro'] table th,
+[data-tema='escuro'] table td {
+  color: #000000 !important;
+}
+:root[data-tema='claro'] {
+  --tabela-texto: #000000;  /* preto */
+}
+:root[data-tema='escuro'] {
+  --tabela-texto: #000000;  /* continua preto mesmo no modo escuro */
+}
+
+}

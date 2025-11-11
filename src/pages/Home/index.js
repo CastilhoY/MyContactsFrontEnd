@@ -8,6 +8,7 @@ import {
   ErrorContainer,
   EmptyListContainer,
   SearchNotFoundContainer,
+  TableWrapper,
 } from "./styles";
 import { Link } from "react-router-dom";
 
@@ -22,7 +23,7 @@ import Loader from "../../components/Loader/";
 import ContactsService from "../../services/ContactsService";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal";
-import toast from '../../utils/toast'
+import toast from "../../utils/toast";
 
 export default function Home() {
   const [contacts, setContacts] = useState([]);
@@ -31,8 +32,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
-  const [contactBeingDeleted, setContactBeingDeleted] = useState(null)
-  const [isLoadingDelete, setIsLoadingDelete ] = useState(false)
+  const [contactBeingDeleted, setContactBeingDeleted] = useState(null);
+  const [isLoadingDelete, setIsLoadingDelete] = useState(false);
 
   const filtredContacts = useMemo(
     () =>
@@ -45,9 +46,7 @@ export default function Home() {
   const loadContacts = useCallback(async () => {
     try {
       setIsLoading(true);
-
       const contactsList = await ContactsService.listContacts(orderBy);
-
       setHasError(false);
       setContacts(contactsList);
     } catch {
@@ -74,37 +73,37 @@ export default function Home() {
   }
 
   function handleDeleteContact(contact) {
-    setContactBeingDeleted(contact)
+    setContactBeingDeleted(contact);
     setIsDeleteModalVisible(true);
   }
 
   function handleCloseDeleteModal() {
     setIsDeleteModalVisible(false);
-    setContactBeingDeleted(null)
+    setContactBeingDeleted(null);
   }
 
   async function handleConfirmDeleteContact() {
     try {
-      setIsLoadingDelete(true)
-      await ContactsService.deleteContact(contactBeingDeleted.id)
+      setIsLoadingDelete(true);
+      await ContactsService.deleteContact(contactBeingDeleted.id);
 
-      setContacts((prevState) => prevState.filter(
-        (contact) => contact.id !== contactBeingDeleted.id
-      ))
+      setContacts((prevState) =>
+        prevState.filter((contact) => contact.id !== contactBeingDeleted.id)
+      );
 
-      handleCloseDeleteModal()
+      handleCloseDeleteModal();
 
       toast({
-        type: 'success',
-        text: 'Contato deletado com sucesso!',
-      })
-    }catch {
+        type: "success",
+        text: "Contato deletado com sucesso!",
+      });
+    } catch {
       toast({
-        type: 'danger',
-        text: 'Ocorreu um erro ao deletar o contato!',
-      })
+        type: "danger",
+        text: "Ocorreu um erro ao deletar o contato!",
+      });
     } finally {
-      setIsLoadingDelete(false)
+      setIsLoadingDelete(false);
     }
   }
 
@@ -174,7 +173,7 @@ export default function Home() {
               <img src={emptyBox} alt="Empty box" />
               <p>
                 Você ainda não tem nenhum contato cadastrado! Clique no botão{" "}
-                <strong>”Novo contato”</strong> à cima para cadastrar o seu
+                <strong>”Novo contato”</strong> acima para cadastrar o seu
                 primeiro!
               </p>
             </EmptyListContainer>
@@ -200,31 +199,34 @@ export default function Home() {
             </ListHeader>
           )}
 
-          {filtredContacts.map((contact) => (
-            <Card key={contact.id}>
-              <div className="info">
-                <div className="contact-name">
-                  <strong>{contact.name}</strong>
-                  {contact.category_name && (
-                    <small>{contact.category_name}</small>
-                  )}
+          {/* 🔹 Envolve a tabela no TableWrapper para isolar a cor preta */}
+          <TableWrapper>
+            {filtredContacts.map((contact) => (
+              <Card key={contact.id}>
+                <div className="info">
+                  <div className="contact-name">
+                    <strong>{contact.name}</strong>
+                    {contact.category_name && (
+                      <small>{contact.category_name}</small>
+                    )}
+                  </div>
+                  <span>{contact.email}</span>
+                  <span>{contact.phone}</span>
                 </div>
-                <span>{contact.email}</span>
-                <span>{contact.phone}</span>
-              </div>
-              <div className="actions">
-                <Link to={`/edit/${contact.id}`}>
-                  <img src={edit} alt="Edit" />
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => handleDeleteContact(contact)}
-                >
-                  <img src={trash} alt="Delete" />
-                </button>
-              </div>
-            </Card>
-          ))}
+                <div className="actions">
+                  <Link to={`/edit/${contact.id}`}>
+                    <img src={edit} alt="Edit" />
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteContact(contact)}
+                  >
+                    <img src={trash} alt="Delete" />
+                  </button>
+                </div>
+              </Card>
+            ))}
+          </TableWrapper>
         </>
       )}
     </Container>
