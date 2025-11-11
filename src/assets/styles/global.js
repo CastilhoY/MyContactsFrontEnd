@@ -36,8 +36,8 @@ export default createGlobalStyle`
 
   /* 🔧 Garante responsividade */
   #root {
-    width: 100%;
+    /* width: 100%;
     max-width: 1100px;
-    padding: 20px;
+    padding: 20px; */
   }
 `;
