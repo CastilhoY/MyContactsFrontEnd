@@ -97,4 +97,13 @@ img.avatar {
   .tabela-contatos td:nth-of-type(2):before { content: "Nome"; }
   .tabela-contatos td:nth-of-type(3):before { content: "Email"; }
   .tabela-contatos td:nth-of-type(4):before { content: "Telefone"; }
+  /* 🔒 Mantém o texto da tabela sempre preto, independentemente do tema */
+.tabela-contatos,
+.tabela-contatos th,
+.tabela-contatos td,
+.tabela-contatos tr {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
 }
