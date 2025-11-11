@@ -33,7 +33,7 @@ html, body {
   font-size: 16px;
   z-index: 1000;
   transition: all 0.3s ease;
-  
+
   /* Mantém o texto da tabela preto mesmo no modo escuro */
 [data-tema='escuro'] table,
 [data-tema='escuro'] table th,

@@ -16,7 +16,7 @@ function App() {
             <GlobalStyles />
             <ToastContainer />
 
-            <Container>
+            <Container style={{ padding: "0rem 3rem 0rem 3rem"}}>
                 <Header />
                 <Routes />
             </Container>

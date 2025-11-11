@@ -9,16 +9,12 @@ export default createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.colors.background};
     font-size: 16px;
     color: ${({ theme }) => theme.colors.gray[900]};
     transition: background 0.3s, color 0.3s;
-
-    /* ✅ Centraliza todo o conteúdo do site */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     flex-direction: column;
     text-align: center;
   }
@@ -28,10 +24,10 @@ export default createGlobalStyle`
   }
 
   /* 🔒 Mantém a tabela sempre branca com texto preto */
-  table, 
-  th, 
-  td, 
-  .tabela-contatos, 
+  table,
+  th,
+  td,
+  .tabela-contatos,
   .tabela-contatos * {
     background-color: #ffffff !important; /* fundo sempre branco */
     color: #000000 !important; /* texto sempre preto */
